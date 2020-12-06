@@ -6,7 +6,7 @@ import 'custom_text.dart';
 class ProductWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return  Padding(
+    return Padding(
       padding: const EdgeInsets.only(left: 4, right: 4, top: 4, bottom: 10),
       child: Container(
         height: 110,
@@ -18,8 +18,7 @@ class ProductWidget extends StatelessWidget {
                   color: Colors.grey[300],
                   offset: Offset(-2, -1),
                   blurRadius: 5),
-            ]
-        ),
+            ]),
 //            height: 160,
         child: Row(
           children: <Widget>[
@@ -31,28 +30,29 @@ class ProductWidget extends StatelessWidget {
                   bottomLeft: Radius.circular(20),
                   topLeft: Radius.circular(20),
                 ),
-                child: Image.asset("images/food.jpg", fit: BoxFit.fill,),
+                child: Image.asset(
+                  "images/food.jpg",
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
             Expanded(
               child: Column(
                 children: <Widget>[
                   Row(
-                    mainAxisAlignment:
-                    MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: CustomText(
-                          text: "Pancakes",
+                          text: "Sayur Asem",
                         ),
                       ),
                       Padding(
                         padding: EdgeInsets.all(8),
                         child: Container(
                           decoration: BoxDecoration(
-                              borderRadius:
-                              BorderRadius.circular(20),
+                              borderRadius: BorderRadius.circular(20),
                               color: white,
                               boxShadow: [
                                 BoxShadow(
@@ -72,19 +72,28 @@ class ProductWidget extends StatelessWidget {
                       )
                     ],
                   ),
-
                   SizedBox(
                     height: 25,
                   ),
-
                   Padding(
                     padding: const EdgeInsets.only(left: 4),
                     child: Row(
                       children: <Widget>[
-                        CustomText(text: "from: ", color: grey, weight: FontWeight.w300, size: 14,),
-                        SizedBox(width: 10,),
-                        CustomText(text: "Santos Tacho: ", color: primary, weight: FontWeight.w300, size: 14,),
-
+                        CustomText(
+                          text: "from: ",
+                          color: grey,
+                          weight: FontWeight.w300,
+                          size: 14,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        CustomText(
+                          text: "Herry Resto: ",
+                          color: primary,
+                          weight: FontWeight.w300,
+                          size: 14,
+                        ),
                       ],
                     ),
                   ),
@@ -127,13 +136,14 @@ class ProductWidget extends StatelessWidget {
                         ],
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(right:8.0),
-                        child: CustomText(text: "\$3.55",weight: FontWeight.bold,),
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: CustomText(
+                          text: "\Rp 30.000",
+                          weight: FontWeight.bold,
+                        ),
                       ),
                     ],
                   ),
-
-
                 ],
               ),
             )
