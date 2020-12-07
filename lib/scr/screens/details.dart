@@ -45,7 +45,7 @@ class _DetailsState extends State<Details> {
             SizedBox(height: 15,),
 
             CustomText(text: widget.product.name,size: 26,weight: FontWeight.bold),
-            CustomText(text: "\$${widget.product.price / 100}",size: 20,weight: FontWeight.w400),
+            CustomText(text: "\Rp. ${widget.product.price }",size: 20,weight: FontWeight.w400),
             SizedBox(height: 10,),
 
             CustomText(text: "Description",size: 18,weight: FontWeight.w400),
