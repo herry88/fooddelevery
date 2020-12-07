@@ -29,7 +29,6 @@ class CategoryScreen extends StatelessWidget {
                 child: Loading(),
               )),
               ClipRRect(
-
 //                borderRadius: BorderRadius.only(
 //                  bottomLeft: Radius.circular(30),
 //                  bottomRight: Radius.circular(30),
@@ -50,43 +49,55 @@ class CategoryScreen extends StatelessWidget {
 //                      bottomRight: Radius.circular(30),
 //                    ),
                     gradient: LinearGradient(
-                      begin: Alignment.bottomCenter,
-                      end: Alignment.topCenter,
-                      colors: [
-                        Colors.black.withOpacity(0.6),
-                        Colors.black.withOpacity(0.6),
-                        Colors.black.withOpacity(0.6),
-                        Colors.black.withOpacity(0.4),
-                        Colors.black.withOpacity(0.1),
-                        Colors.black.withOpacity(0.05),
-                        Colors.black.withOpacity(0.025),
-                      ],
-                    )),
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
+                  colors: [
+                    Colors.black.withOpacity(0.6),
+                    Colors.black.withOpacity(0.6),
+                    Colors.black.withOpacity(0.6),
+                    Colors.black.withOpacity(0.4),
+                    Colors.black.withOpacity(0.1),
+                    Colors.black.withOpacity(0.05),
+                    Colors.black.withOpacity(0.025),
+                  ],
+                )),
               ),
               Positioned.fill(
                 bottom: 40,
-                  child: Align(
-                      alignment: Alignment.bottomCenter,
-                      child: CustomText(text: categoryModel.name, color: white, size: 26, weight: FontWeight.w300,))),
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: CustomText(
+                    text: categoryModel.name,
+                    color: white,
+                    size: 26,
+                    weight: FontWeight.w300,
+                  ),
+                ),
+              ),
               Positioned.fill(
                   top: 5,
                   child: Align(
-                      alignment: Alignment.topLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.all(4),
-                        child: GestureDetector(
-                          onTap: (){
-                            Navigator.pop(context);
-                          },
-                          child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                color: black.withOpacity(0.2)
+                    alignment: Alignment.topLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.all(4),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: black.withOpacity(
+                                0.2,
                               ),
-                              child: Icon(Icons.close, color: white,)),
-                        ),
-                      ),)),
-              
+                            ),
+                            child: Icon(
+                              Icons.close,
+                              color: white,
+                            )),
+                      ),
+                    ),
+                  )),
             ],
           ),
           SizedBox(
@@ -95,17 +106,14 @@ class CategoryScreen extends StatelessWidget {
           Column(
             children: productProvider.productsByCategory
                 .map((item) => GestureDetector(
-              onTap: () {
-
+                      onTap: () {
 //                changeScreen(context, RestaurantScreen(restaurantModel: item,));
-              },
-              child: ProductWidget(),
-            ))
+                      },
+                      child: ProductWidget(),
+                    ))
                 .toList(),
           )
-
         ],
-
       )),
     );
   }

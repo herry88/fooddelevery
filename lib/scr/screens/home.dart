@@ -170,25 +170,26 @@ class _HomeState extends State<Home> {
             Container(
               height: 100,
               child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: categoryProvider.categories.length,
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () async {
-                        await productProvider.loadProductsByCategory(
-                            categoryName:
-                                categoryProvider.categories[index].name);
-                        changeScreen(
-                            context,
-                            CategoryScreen(
-                              categoryModel: categoryProvider.categories[index],
-                            ));
-                      },
-                      child: CategoryWidget(
-                        category: categoryProvider.categories[index],
-                      ),
-                    );
-                  }),
+                scrollDirection: Axis.horizontal,
+                itemCount: categoryProvider.categories.length,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () async {
+                      await productProvider.loadProductsByCategory(
+                          categoryName:
+                              categoryProvider.categories[index].name);
+                      changeScreen(
+                          context,
+                          CategoryScreen(
+                            categoryModel: categoryProvider.categories[index],
+                          ));
+                    },
+                    child: CategoryWidget(
+                      category: categoryProvider.categories[index],
+                    ),
+                  );
+                },
+              ),
             ),
             SizedBox(
               height: 5,
