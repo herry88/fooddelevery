@@ -128,7 +128,7 @@ class ProductWidget extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(right:8.0),
-                        child: CustomText(text: "\$3.55",weight: FontWeight.bold,),
+                        child: CustomText(text: "\Rp. 3.55",weight: FontWeight.bold,),
                       ),
                     ],
                   ),

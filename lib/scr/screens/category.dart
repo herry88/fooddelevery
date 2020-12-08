@@ -105,12 +105,14 @@ class CategoryScreen extends StatelessWidget {
           ),
           Column(
             children: productProvider.productsByCategory
-                .map((item) => GestureDetector(
-                      onTap: () {
+                .map(
+                  (item) => GestureDetector(
+                    onTap: () {
 //                changeScreen(context, RestaurantScreen(restaurantModel: item,));
-                      },
-                      child: ProductWidget(),
-                    ))
+                    },
+                    child: ProductWidget(),
+                  ),
+                )
                 .toList(),
           )
         ],
