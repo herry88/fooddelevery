@@ -9,7 +9,6 @@ class RestaurantModel {
   static const IMAGE = "image";
   static const POPULAR = "popular";
 
-
   int _id;
   String _name;
   String _image;

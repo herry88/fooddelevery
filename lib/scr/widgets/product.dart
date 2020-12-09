@@ -11,8 +11,10 @@ class ProductWidget extends StatelessWidget {
   const ProductWidget({Key key, this.product}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+
     // final restaurantProvider = Provider.of<RestaurantProvider>(context);
     final productProvider = Provider.of<ProductProvider>(context);
+
 
     return Padding(
       padding: const EdgeInsets.only(left: 4, right: 4, top: 4, bottom: 10),
@@ -38,8 +40,13 @@ class ProductWidget extends StatelessWidget {
                   bottomLeft: Radius.circular(20),
                   topLeft: Radius.circular(20),
                 ),
+
                 child: Image.network(
                   product.image,
+
+                child: Image.asset(
+                  "images/food.jpg",
+
                   fit: BoxFit.fill,
                 ),
               ),
@@ -54,6 +61,9 @@ class ProductWidget extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: CustomText(
                           text: product.name,
+
+                          text: "Sayur Asem",
+
                         ),
                       ),
                       Padding(
@@ -96,6 +106,7 @@ class ProductWidget extends StatelessWidget {
                         SizedBox(
                           width: 10,
                         ),
+
                         GestureDetector(
                             onTap: () async {
                               await productProvider.loadProductsByRestaurant(
@@ -109,6 +120,13 @@ class ProductWidget extends StatelessWidget {
                               weight: FontWeight.w300,
                               size: 14,
                             )),
+                        CustomText(
+                          text: "Herry Resto: ",
+                          color: primary,
+                          weight: FontWeight.w300,
+                          size: 14,
+                        ),
+
                       ],
                     ),
                   ),
@@ -155,7 +173,11 @@ class ProductWidget extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(right: 8.0),
                         child: CustomText(
+
                           text: "\Rp ${product.price}",
+
+                          text: "\Rp 30.000",
+
                           weight: FontWeight.bold,
                         ),
                       ),
