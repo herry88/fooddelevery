@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:fooddelevery/scr/helpers/style.dart';
+import 'package:fooddelevery/scr/models/products.dart';
+import 'package:fooddelevery/scr/providers/product.dart';
+import 'package:provider/provider.dart';
 
 import 'custom_text.dart';
 
 class ProductWidget extends StatelessWidget {
+  final ProductModel product;
+  const ProductWidget({Key key, this.product}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+
+    // final restaurantProvider = Provider.of<RestaurantProvider>(context);
+    final productProvider = Provider.of<ProductProvider>(context);
+
+
     return Padding(
       padding: const EdgeInsets.only(left: 4, right: 4, top: 4, bottom: 10),
       child: Container(
@@ -30,8 +40,13 @@ class ProductWidget extends StatelessWidget {
                   bottomLeft: Radius.circular(20),
                   topLeft: Radius.circular(20),
                 ),
+
+                child: Image.network(
+                  product.image,
+
                 child: Image.asset(
                   "images/food.jpg",
+
                   fit: BoxFit.fill,
                 ),
               ),
@@ -45,7 +60,10 @@ class ProductWidget extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: CustomText(
+                          text: product.name,
+
                           text: "Sayur Asem",
+
                         ),
                       ),
                       Padding(
@@ -88,12 +106,27 @@ class ProductWidget extends StatelessWidget {
                         SizedBox(
                           width: 10,
                         ),
+
+                        GestureDetector(
+                            onTap: () async {
+                              await productProvider.loadProductsByRestaurant(
+                                  restaurantId: product.restaurantId);
+                              // await restaurantProvider.loadSingleRestaurant(retaurantId: product.restaurantId);
+                              // changeScreen(context, RestaurantScreen(restaurantModel: restaurantProvider.restaurant,));
+                            },
+                            child: CustomText(
+                              text: product.restaurant,
+                              color: primary,
+                              weight: FontWeight.w300,
+                              size: 14,
+                            )),
                         CustomText(
                           text: "Herry Resto: ",
                           color: primary,
                           weight: FontWeight.w300,
                           size: 14,
                         ),
+
                       ],
                     ),
                   ),
@@ -103,9 +136,11 @@ class ProductWidget extends StatelessWidget {
                       Row(
                         children: <Widget>[
                           Padding(
-                            padding: const EdgeInsets.only(left: 8.0),
+                            padding: const EdgeInsets.only(
+                              left: 8.0,
+                            ),
                             child: CustomText(
-                              text: "4.3",
+                              text: product.rating.toString(),
                               color: grey,
                               size: 14.0,
                             ),
@@ -138,7 +173,11 @@ class ProductWidget extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(right: 8.0),
                         child: CustomText(
+
+                          text: "\Rp ${product.price}",
+
                           text: "\Rp 30.000",
+
                           weight: FontWeight.bold,
                         ),
                       ),

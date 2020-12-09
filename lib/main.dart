@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:fooddelevery/scr/providers/app.dart';
 import 'package:fooddelevery/scr/providers/category.dart';
 import 'package:fooddelevery/scr/providers/product.dart';
 import 'package:fooddelevery/scr/providers/restaurant.dart';
@@ -15,6 +16,7 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
+        ChangeNotifierProvider.value(value: AppProvider()),
         ChangeNotifierProvider.value(value: UserProvider.initialize()),
         ChangeNotifierProvider.value(value: CategoryProvider.initialize()),
         ChangeNotifierProvider.value(value: RestaurantProvider.initialize()),

@@ -140,12 +140,17 @@ class Featured extends StatelessWidget {
                               ],
                             ),
                             Padding(
+
+                              padding: const EdgeInsets.only(right:8.0),
+                              child: CustomText(text: "\Rp ${productProvider.products[index].price }",weight: FontWeight.bold,),
+
                               padding: const EdgeInsets.only(right: 8.0),
                               child: CustomText(
                                 text:
                                     "\Rp ${productProvider.products[index].price}",
                                 weight: FontWeight.bold,
                               ),
+
                             ),
                           ],
                         ),
