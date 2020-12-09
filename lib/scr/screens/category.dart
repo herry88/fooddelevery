@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:fooddelevery/scr/helpers/screen_navigation.dart';
 import 'package:fooddelevery/scr/helpers/style.dart';
 import 'package:fooddelevery/scr/models/category.dart';
 import 'package:fooddelevery/scr/providers/product.dart';
+import 'package:fooddelevery/scr/screens/details.dart';
 import 'package:fooddelevery/scr/widgets/custom_text.dart';
 import 'package:fooddelevery/scr/widgets/loading.dart';
 import 'package:fooddelevery/scr/widgets/product.dart';
@@ -108,9 +110,15 @@ class CategoryScreen extends StatelessWidget {
                 .map(
                   (item) => GestureDetector(
                     onTap: () {
+                      changeScreen(
+                        context,
+                        Details(product: item),
+                      );
 //                changeScreen(context, RestaurantScreen(restaurantModel: item,));
                     },
-                    child: ProductWidget(),
+                    child: ProductWidget(
+                      product: item,
+                    ),
                   ),
                 )
                 .toList(),

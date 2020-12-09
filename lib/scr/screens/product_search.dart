@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 class ProductSearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final productProvider = Provider.of<ProductProvider>(context);
+    // final productProvider = Provider.of<ProductProvider>(context);
 
     return Scaffold(
       appBar: new AppBar(
