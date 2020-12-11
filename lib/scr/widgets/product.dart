@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:fooddelevery/scr/helpers/screen_navigation.dart';
 import 'package:fooddelevery/scr/helpers/style.dart';
 import 'package:fooddelevery/scr/models/products.dart';
 import 'package:fooddelevery/scr/providers/product.dart';
+import 'package:fooddelevery/scr/providers/restaurant.dart';
+import 'package:fooddelevery/scr/screens/restaurant.dart';
 import 'package:provider/provider.dart';
 
 import 'custom_text.dart';
@@ -11,7 +14,7 @@ class ProductWidget extends StatelessWidget {
   const ProductWidget({Key key, this.product}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    // final restaurantProvider = Provider.of<RestaurantProvider>(context);
+    final restaurantProvider = Provider.of<RestaurantProvider>(context);
     final productProvider = Provider.of<ProductProvider>(context);
 
     return Padding(
@@ -100,8 +103,15 @@ class ProductWidget extends StatelessWidget {
                             onTap: () async {
                               await productProvider.loadProductsByRestaurant(
                                   restaurantId: product.restaurantId);
-                              // await restaurantProvider.loadSingleRestaurant(retaurantId: product.restaurantId);
-                              // changeScreen(context, RestaurantScreen(restaurantModel: restaurantProvider.restaurant,));
+                              await restaurantProvider.loadSingleRestaurant(
+                                  restaurantId: product.restaurantId);
+                              changeScreen(
+                                context,
+                                RestaurantScreen(
+                                  restaurantModel:
+                                      restaurantProvider.restaurant,
+                                ),
+                              );
                             },
                             child: CustomText(
                               text: product.restaurant,

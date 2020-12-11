@@ -6,6 +6,8 @@ class RestaurantProvider with ChangeNotifier{
   RestaurantServices _restaurantServices = RestaurantServices();
   List<RestaurantModel> restaurants = [];
 
+  RestaurantModel restaurant;
+
   RestaurantProvider.initialize(){
     _loadRestaurants();
   }
@@ -14,4 +16,12 @@ class RestaurantProvider with ChangeNotifier{
     restaurants = await _restaurantServices.getRestaurants();
     notifyListeners();
   }
+
+  loadSingleRestaurant({int restaurantId}) async{
+    restaurant = await _restaurantServices.getRestaurantById(id: restaurantId);
+    notifyListeners();
+
+  }
+
+
 }

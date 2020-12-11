@@ -54,7 +54,9 @@ class _HomeState extends State<Home> {
                   height: 10,
                   width: 10,
                   decoration: BoxDecoration(
-                      color: green, borderRadius: BorderRadius.circular(20.0)),
+                    color: green,
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
                 ),
               ),
             ],
@@ -162,8 +164,8 @@ class _HomeState extends State<Home> {
                           ),
                           title: TextField(
                             textInputAction: TextInputAction.search,
-                            onSubmitted: (pattern)async{
-                              app.changeLoading(); 
+                            onSubmitted: (pattern) async {
+                              app.changeLoading();
                               //searchHere
                             },
                             decoration: InputDecoration(
@@ -260,10 +262,11 @@ class _HomeState extends State<Home> {
                               app.changeLoading();
 
                               changeScreen(
-                                  context,
-                                  RestaurantScreen(
-                                    restaurantModel: item,
-                                  ));
+                                context,
+                                RestaurantScreen(
+                                  restaurantModel: item,
+                                ),
+                              );
                             },
                             child: RestaurantWidget(
                               restaurant: item,

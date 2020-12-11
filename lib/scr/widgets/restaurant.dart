@@ -14,7 +14,7 @@ class RestaurantWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top:2, left:2, right: 2, bottom: 4),
+      padding: const EdgeInsets.only(top: 2, left: 2, right: 2, bottom: 4),
       child: Stack(
         children: <Widget>[
           Padding(
@@ -23,14 +23,16 @@ class RestaurantWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0),
                 child: Stack(
                   children: <Widget>[
-                    Positioned.fill(child: Align(
+                    Positioned.fill(
+                        child: Align(
                       alignment: Alignment.center,
-                      child: Container(
-                          height: 120,
-                          child: Loading()),
+                      child: Container(height: 120, child: Loading()),
                     )),
                     Center(
-                      child: FadeInImage.memoryNetwork(placeholder: kTransparentImage, image: restaurant.image),
+                      child: FadeInImage.memoryNetwork(
+                        placeholder: kTransparentImage,
+                        image: restaurant.image,
+                      ),
                     )
                   ],
                 )),
@@ -59,7 +61,9 @@ class RestaurantWidget extends StatelessWidget {
                             size: 20,
                           ),
                         ),
-                        Text(restaurant.rating.toString()),
+                        Text(
+                          restaurant.rating.toString(),
+                        ),
                       ],
                     ),
                   ),
@@ -69,58 +73,56 @@ class RestaurantWidget extends StatelessWidget {
           ),
           Positioned.fill(
               child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Container(
-                  height: 100,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(20),
-                        bottomRight: Radius.circular(20),
-                      ),
-                      gradient: LinearGradient(
-                        begin: Alignment.bottomCenter,
-                        end: Alignment.topCenter,
-                        colors: [
-                          Colors.black.withOpacity(0.8),
-                          Colors.black.withOpacity(0.7),
-                          Colors.black.withOpacity(0.6),
-                          Colors.black.withOpacity(0.4),
-                          Colors.black.withOpacity(0.1),
-                          Colors.black.withOpacity(0.05),
-                          Colors.black.withOpacity(0.025),
-                        ],
-                      )),
-                ),
-              )),
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              height: 100,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(20),
+                    bottomRight: Radius.circular(20),
+                  ),
+                  gradient: LinearGradient(
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                    colors: [
+                      Colors.black.withOpacity(0.8),
+                      Colors.black.withOpacity(0.7),
+                      Colors.black.withOpacity(0.6),
+                      Colors.black.withOpacity(0.4),
+                      Colors.black.withOpacity(0.1),
+                      Colors.black.withOpacity(0.05),
+                      Colors.black.withOpacity(0.025),
+                    ],
+                  )),
+            ),
+          )),
           Positioned.fill(
               child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(12, 8, 8, 8),
-                      child: RichText(
-                        text: TextSpan(children: [
-                          TextSpan(
-                              text: "${restaurant.name} \n",
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold)),
-                          TextSpan(
-                              text: "avg meal price: ",
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300)),
-                          TextSpan(
-                              text: "\$${restaurant.avgPrice} \n",
-                              style: TextStyle(fontSize: 16)),
-                        ], style: TextStyle(color: white)),
-                      ),
-                    ),
-                  ],
+            alignment: Alignment.bottomCenter,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(12, 8, 8, 8),
+                  child: RichText(
+                    text: TextSpan(children: [
+                      TextSpan(
+                          text: "${restaurant.name} \n",
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold)),
+                      TextSpan(
+                          text: "avg meal price: ",
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.w300)),
+                      TextSpan(
+                          text: "\$${restaurant.avgPrice} \n",
+                          style: TextStyle(fontSize: 16),),
+                    ], style: TextStyle(color: white),),
+                  ),
                 ),
-              ))
+              ],
+            ),
+          ))
         ],
       ),
     );
