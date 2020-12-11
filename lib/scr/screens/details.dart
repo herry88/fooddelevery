@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:fooddelevery/scr/models/products.dart';
 import 'package:fooddelevery/scr/widgets/custom_text.dart';
 
+
 import '../helpers/style.dart';
 
 class Details extends StatefulWidget {
-  final ProductModel product;
+   final ProductModel product;
 
   const Details({@required this.product});
+
 
   @override
   _DetailsState createState() => _DetailsState();
@@ -27,12 +29,9 @@ class _DetailsState extends State<Details> {
             icon: Icon(Icons.shopping_cart),
             onPressed: () {},
           ),
+
         ],
-        leading: IconButton(
-            icon: Icon(Icons.close),
-            onPressed: () {
-              Navigator.pop(context);
-            }),
+        leading: IconButton(icon: Icon(Icons.close), onPressed: (){Navigator.pop(context);}),
       ),
       backgroundColor: white,
       body: SafeArea(
@@ -43,82 +42,58 @@ class _DetailsState extends State<Details> {
               radius: 120,
               backgroundImage: NetworkImage(widget.product.image),
             ),
-            SizedBox(
-              height: 15,
-            ),
-            CustomText(
-                text: widget.product.name, size: 26, weight: FontWeight.bold),
-            CustomText(
-              text: "\Rp ${widget.product.price}",
-              size: 20,
-              weight: FontWeight.w400,
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            CustomText(text: "Description", size: 18, weight: FontWeight.w400),
+            SizedBox(height: 15,),
+
+            CustomText(text: widget.product.name,size: 26,weight: FontWeight.bold),
+            CustomText(text: "\Rp. ${widget.product.price }",size: 20,weight: FontWeight.w400),
+            SizedBox(height: 10,),
+
+            CustomText(text: "Description",size: 18,weight: FontWeight.w400),
+
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(
-                widget.product.description,
-                textAlign: TextAlign.center,
-                style: TextStyle(color: grey, fontWeight: FontWeight.w300),
-              ),
+              child: Text(widget.product.description , textAlign: TextAlign.center, style: TextStyle(color: grey, fontWeight: FontWeight.w300),),
             ),
-            SizedBox(
-              height: 15,
-            ),
+            SizedBox(height: 15,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: IconButton(
-                      icon: Icon(
-                        Icons.remove,
-                        size: 36,
-                      ),
-                      onPressed: () {
-                        if (quantity != 1) {
-                          setState(() {
-                            quantity -= 1;
-                          });
-                        }
-                      }),
+                  child: IconButton(icon: Icon(Icons.remove,size: 36,), onPressed: (){
+                    if(quantity != 1){
+                      setState(() {
+                        quantity -= 1;
+                      });
+                    }
+                  }),
                 ),
+
                 GestureDetector(
-                  onTap: () {},
+                  onTap: (){},
                   child: Container(
                     decoration: BoxDecoration(
-                        color: primary,
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(28, 12, 28, 12),
-                      child: CustomText(
-                        text: "Add $quantity To Cart",
-                        color: white,
-                        size: 22,
-                        weight: FontWeight.w300,
-                      ),
+                      color: primary,
+                      borderRadius: BorderRadius.circular(20)
                     ),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(28,12,28,12),
+                      child: CustomText(text: "Add $quantity To Cart",color: white,size: 22,weight: FontWeight.w300,),
+                    ),
+
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: IconButton(
-                      icon: Icon(
-                        Icons.add,
-                        size: 36,
-                        color: red,
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          quantity += 1;
-                        });
-                      }),
+                  child: IconButton(icon: Icon(Icons.add,size: 36,color: red,), onPressed: (){
+                    setState(() {
+                      quantity += 1;
+                    });
+                  }),
                 ),
               ],
             ),
+
           ],
         ),
       ),

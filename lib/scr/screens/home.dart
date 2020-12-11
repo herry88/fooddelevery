@@ -13,7 +13,11 @@ import 'package:fooddelevery/scr/screens/restaurant.dart';
 import 'package:fooddelevery/scr/widgets/categories.dart';
 import 'package:fooddelevery/scr/widgets/custom_text.dart';
 import 'package:fooddelevery/scr/widgets/featured_products.dart';
+
 import 'package:fooddelevery/scr/widgets/loading.dart';
+
+// import 'package:fooddelevery/scr/widgets/featured_products.dart';
+
 import 'package:fooddelevery/scr/widgets/restaurant.dart';
 import 'package:provider/provider.dart';
 
