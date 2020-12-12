@@ -29,8 +29,8 @@ class RestaurantServices {
         .get()
         .then((result) {
       List<RestaurantModel> restaurants = [];
-      for (DocumentSnapshot restaurant in result.docs) {
-        restaurants.add(RestaurantModel.fromSnapshot(restaurant));
+      for (DocumentSnapshot product in result.docs) {
+        restaurants.add(RestaurantModel.fromSnapshot(product));
       }
       return restaurants;
     });
