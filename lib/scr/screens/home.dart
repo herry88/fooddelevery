@@ -9,7 +9,9 @@ import 'package:fooddelevery/scr/providers/product.dart';
 import 'package:fooddelevery/scr/providers/restaurant.dart';
 import 'package:fooddelevery/scr/providers/user.dart';
 import 'package:fooddelevery/scr/screens/category.dart';
+import 'package:fooddelevery/scr/screens/product_search.dart';
 import 'package:fooddelevery/scr/screens/restaurant.dart';
+import 'package:fooddelevery/scr/screens/restaurant_search.dart';
 import 'package:fooddelevery/scr/widgets/categories.dart';
 import 'package:fooddelevery/scr/widgets/custom_text.dart';
 import 'package:fooddelevery/scr/widgets/featured_products.dart';
@@ -171,19 +173,61 @@ class _HomeState extends State<Home> {
                             onSubmitted: (pattern) async {
                               app.changeLoading();
                               //searchHere
+                              if (app.search == SearchBy.PRODUCTS) {
+                                await productProvider.search(
+                                    productName: pattern);
+                                changeScreen(context, ProductSearchScreen());
+                              } else {
+                                // print("Restaurant");
+                                await restaurantProvider.search(name: pattern);
+                                changeScreen(
+                                    context, RestaurantsSearchScreen());
+                              }
+                              app.changeLoading();
                             },
                             decoration: InputDecoration(
                               hintText: "Find food and restaurant",
                               border: InputBorder.none,
                             ),
                           ),
-                          trailing: Icon(
-                            Icons.filter_list,
-                            color: red,
-                          ),
                         ),
                       ),
                     ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      CustomText(
+                        text: "Search by:",
+                        color: grey,
+                        weight: FontWeight.w300,
+                      ),
+                      DropdownButton<String>(
+                        value: app.filterBy,
+                        style: TextStyle(
+                          color: primary,
+                          fontWeight: FontWeight.w300,
+                        ),
+                        icon: Icon(
+                          Icons.filter_list,
+                          color: primary,
+                        ),
+                        elevation: 0,
+                        onChanged: (value) {
+                          if (value == "Products") {
+                            app.changeSearchBy(newSearchBy: SearchBy.PRODUCTS);
+                          } else {
+                            app.changeSearchBy(
+                                newSearchBy: SearchBy.RESTAURANTS);
+                          }
+                        },
+                        items: <String>["Products", "Restaurants"]
+                            .map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                              value: value, child: Text(value));
+                        }).toList(),
+                      ),
+                    ],
                   ),
                   SizedBox(
                     height: 10,
