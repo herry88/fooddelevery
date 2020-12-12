@@ -87,7 +87,7 @@ class Featured extends StatelessWidget {
                                           color: Colors.grey[300],
                                           offset: Offset(1, 1),
                                           blurRadius: 4),
-                                    ]),
+                                    ],),
                                 child: Padding(
                                   padding: const EdgeInsets.all(4.0),
                                   child: Icon(
@@ -140,17 +140,12 @@ class Featured extends StatelessWidget {
                               ],
                             ),
                             Padding(
-
-                              padding: const EdgeInsets.only(right:8.0),
-                              child: CustomText(text: "\Rp ${productProvider.products[index].price }",weight: FontWeight.bold,),
-
                               padding: const EdgeInsets.only(right: 8.0),
                               child: CustomText(
                                 text:
                                     "\Rp ${productProvider.products[index].price}",
                                 weight: FontWeight.bold,
                               ),
-
                             ),
                           ],
                         ),

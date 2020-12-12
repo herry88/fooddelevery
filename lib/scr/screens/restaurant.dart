@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:fooddelevery/scr/helpers/screen_navigation.dart';
 import 'package:fooddelevery/scr/helpers/style.dart';
 import 'package:fooddelevery/scr/models/restaurant.dart';
 import 'package:fooddelevery/scr/providers/product.dart';
+import 'package:fooddelevery/scr/screens/details.dart';
 import 'package:fooddelevery/scr/widgets/custom_text.dart';
 import 'package:fooddelevery/scr/widgets/loading.dart';
 import 'package:fooddelevery/scr/widgets/product.dart';
@@ -49,49 +51,54 @@ class RestaurantScreen extends StatelessWidget {
               Container(
                 height: 160,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(20),
-                      bottomRight: Radius.circular(20),
-                    ),
-                    gradient: LinearGradient(
-                      begin: Alignment.bottomCenter,
-                      end: Alignment.topCenter,
-                      colors: [
-                        Colors.black.withOpacity(0.6),
-                        Colors.black.withOpacity(0.6),
-                        Colors.black.withOpacity(0.6),
-                        Colors.black.withOpacity(0.4),
-                        Colors.black.withOpacity(0.1),
-                        Colors.black.withOpacity(0.05),
-                        Colors.black.withOpacity(0.025),
-                      ],
-                    )),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(20),
+                    bottomRight: Radius.circular(20),
+                  ),
+                  gradient: LinearGradient(
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                    colors: [
+                      Colors.black.withOpacity(0.6),
+                      Colors.black.withOpacity(0.6),
+                      Colors.black.withOpacity(0.6),
+                      Colors.black.withOpacity(0.4),
+                      Colors.black.withOpacity(0.1),
+                      Colors.black.withOpacity(0.05),
+                      Colors.black.withOpacity(0.025),
+                    ],
+                  ),
+                ),
               ),
 
               //restaurant name
               Positioned.fill(
-                  bottom: 60,
-                  child: Align(
-                      alignment: Alignment.bottomCenter,
-                      child: CustomText(
-                        text: restaurantModel.name,
-                        color: white,
-                        size: 26,
-                        weight: FontWeight.w300,
-                      ))),
+                bottom: 60,
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: CustomText(
+                    text: restaurantModel.name,
+                    color: white,
+                    size: 26,
+                    weight: FontWeight.w300,
+                  ),
+                ),
+              ),
 
               // average price
               Positioned.fill(
-                  bottom: 40,
-                  child: Align(
-                      alignment: Alignment.bottomCenter,
-                      child: CustomText(
-                        text: "Average Price: \Rp" +
-                            restaurantModel.avgPrice.toString(),
-                        color: white,
-                        size: 18,
-                        weight: FontWeight.w300,
-                      ))),
+                bottom: 40,
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: CustomText(
+                    text: "Average Price: \Rp" +
+                        restaurantModel.avgPrice.toString(),
+                    color: white,
+                    size: 18,
+                    weight: FontWeight.w300,
+                  ),
+                ),
+              ),
 
               // rating widget
               Positioned.fill(
@@ -176,12 +183,10 @@ class RestaurantScreen extends StatelessWidget {
                 size: 18,
               ),
               Container(
-                child: FlatButton.icon(
-                  onPressed: () {},
-                  icon: Icon(Icons.restaurant_menu),
-                  label: CustomText(text: "Book Now"),
-                ),
-              ),
+                  child: FlatButton.icon(
+                      onPressed: () {},
+                      icon: Icon(Icons.restaurant_menu),
+                      label: CustomText(text: "Book Now")))
             ],
           ),
 
@@ -190,9 +195,14 @@ class RestaurantScreen extends StatelessWidget {
             children: productProvider.productsByRestaurant
                 .map((item) => GestureDetector(
                       onTap: () {
-//                changeScreen(context, RestaurantScreen(restaurantModel: item,));
+                        changeScreen(
+                          context,
+                          Details(product: item),
+                        );
                       },
-                      child: ProductWidget(),
+                      child: ProductWidget(
+                        product: item,
+                      ),
                     ))
                 .toList(),
           )
