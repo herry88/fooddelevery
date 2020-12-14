@@ -8,6 +8,7 @@ import 'package:fooddelevery/scr/providers/category.dart';
 import 'package:fooddelevery/scr/providers/product.dart';
 import 'package:fooddelevery/scr/providers/restaurant.dart';
 import 'package:fooddelevery/scr/providers/user.dart';
+import 'package:fooddelevery/scr/screens/bag.dart';
 import 'package:fooddelevery/scr/screens/category.dart';
 import 'package:fooddelevery/scr/screens/product_search.dart';
 import 'package:fooddelevery/scr/screens/restaurant.dart';
@@ -51,40 +52,42 @@ class _HomeState extends State<Home> {
             children: <Widget>[
               IconButton(
                 icon: Icon(Icons.shopping_cart),
-                onPressed: () {},
+                onPressed: () {
+                  changeScreen(context, CartScreen());
+                },
               ),
-              Positioned(
-                top: 12,
-                right: 12,
-                child: Container(
-                  height: 10,
-                  width: 10,
-                  decoration: BoxDecoration(
-                    color: green,
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                ),
-              ),
+              // Positioned(
+              //   top: 12,
+              //   right: 12,
+              //   child: Container(
+              //     height: 10,
+              //     width: 10,
+              //     decoration: BoxDecoration(
+              //       color: green,
+              //       borderRadius: BorderRadius.circular(20.0),
+              //     ),
+              //   ),
+              // ),
             ],
           ),
-          Stack(
-            children: <Widget>[
-              IconButton(
-                icon: Icon(Icons.notifications),
-                onPressed: () {},
-              ),
-              Positioned(
-                top: 12,
-                right: 12,
-                child: Container(
-                  height: 10,
-                  width: 10,
-                  decoration: BoxDecoration(
-                      color: green, borderRadius: BorderRadius.circular(20.0)),
-                ),
-              ),
-            ],
-          ),
+          // Stack(
+          //   children: <Widget>[
+          //     IconButton(
+          //       icon: Icon(Icons.notifications),
+          //       onPressed: () {},
+          //     ),
+          //     Positioned(
+          //       top: 12,
+          //       right: 12,
+          //       child: Container(
+          //         height: 10,
+          //         width: 10,
+          //         decoration: BoxDecoration(
+          //             color: green, borderRadius: BorderRadius.circular(20.0)),
+          //       ),
+          //     ),
+          //   ],
+          // ),
         ],
       ),
       drawer: Drawer(
