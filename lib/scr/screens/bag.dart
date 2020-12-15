@@ -221,7 +221,7 @@ class _CartScreenState extends State<CartScreen> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'You will be charged \$${user.userModel.totalCartPrice / 100} upon delivery!',
+                                        'You will be charged \Rp ${user.userModel.totalCartPrice} upon delivery!',
                                         textAlign: TextAlign.center,
                                       ),
                                       SizedBox(
@@ -258,7 +258,7 @@ class _CartScreenState extends State<CartScreen> {
                                             _key.currentState.showSnackBar(
                                                 SnackBar(
                                                     content: Text(
-                                                        "Order created!")));
+                                                        "Order created!"),),);
                                             Navigator.pop(context);
                                           },
                                           child: Text(
