@@ -17,7 +17,7 @@ class RestaurantModel {
   String _image;
   List<String> _userLikes;
   double _rating;
-  double _avgPrice;
+  int _avgPrice;
   bool _popular;
   int _rates;
 
@@ -30,7 +30,7 @@ class RestaurantModel {
 
   List<String> get userLikes => _userLikes;
 
-  double get avgPrice => _avgPrice;
+  int get avgPrice => _avgPrice;
 
   double get rating => _rating;
 
