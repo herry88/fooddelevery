@@ -8,12 +8,16 @@ class RestaurantModel {
   static const RATES = "rates";
   static const IMAGE = "image";
   static const POPULAR = "popular";
+  static const USER_LIKES = "userLikes";
+
+
 
   int _id;
   String _name;
   String _image;
+  List<String> _userLikes;
   double _rating;
-  int _avgPrice;
+  double _avgPrice;
   bool _popular;
   int _rates;
 
@@ -24,13 +28,18 @@ class RestaurantModel {
 
   String get image => _image;
 
-  int get avgPrice => _avgPrice;
+  List<String> get userLikes => _userLikes;
+
+  double get avgPrice => _avgPrice;
 
   double get rating => _rating;
 
   bool get popular => _popular;
 
   int get rates => _rates;
+
+  // public variable
+  bool liked = false;
 
 
   RestaurantModel.fromSnapshot(DocumentSnapshot snapshot) {

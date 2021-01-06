@@ -8,7 +8,10 @@ import 'package:fooddelevery/scr/providers/category.dart';
 import 'package:fooddelevery/scr/providers/product.dart';
 import 'package:fooddelevery/scr/providers/restaurant.dart';
 import 'package:fooddelevery/scr/providers/user.dart';
+import 'package:fooddelevery/scr/screens/bag.dart';
 import 'package:fooddelevery/scr/screens/category.dart';
+import 'package:fooddelevery/scr/screens/login.dart';
+import 'package:fooddelevery/scr/screens/orderScreen.dart';
 import 'package:fooddelevery/scr/screens/product_search.dart';
 import 'package:fooddelevery/scr/screens/restaurant.dart';
 import 'package:fooddelevery/scr/screens/restaurant_search.dart';
@@ -51,40 +54,42 @@ class _HomeState extends State<Home> {
             children: <Widget>[
               IconButton(
                 icon: Icon(Icons.shopping_cart),
-                onPressed: () {},
+                onPressed: () {
+                  changeScreen(context, CartScreen());
+                },
               ),
-              Positioned(
-                top: 12,
-                right: 12,
-                child: Container(
-                  height: 10,
-                  width: 10,
-                  decoration: BoxDecoration(
-                    color: green,
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                ),
-              ),
+              // Positioned(
+              //   top: 12,
+              //   right: 12,
+              //   child: Container(
+              //     height: 10,
+              //     width: 10,
+              //     decoration: BoxDecoration(
+              //       color: green,
+              //       borderRadius: BorderRadius.circular(20.0),
+              //     ),
+              //   ),
+              // ),
             ],
           ),
-          Stack(
-            children: <Widget>[
-              IconButton(
-                icon: Icon(Icons.notifications),
-                onPressed: () {},
-              ),
-              Positioned(
-                top: 12,
-                right: 12,
-                child: Container(
-                  height: 10,
-                  width: 10,
-                  decoration: BoxDecoration(
-                      color: green, borderRadius: BorderRadius.circular(20.0)),
-                ),
-              ),
-            ],
-          ),
+          // Stack(
+          //   children: <Widget>[
+          //     IconButton(
+          //       icon: Icon(Icons.notifications),
+          //       onPressed: () {},
+          //     ),
+          //     Positioned(
+          //       top: 12,
+          //       right: 12,
+          //       child: Container(
+          //         height: 10,
+          //         width: 10,
+          //         decoration: BoxDecoration(
+          //             color: green, borderRadius: BorderRadius.circular(20.0)),
+          //       ),
+          //     ),
+          //   ],
+          // ),
         ],
       ),
       drawer: Drawer(
@@ -108,30 +113,30 @@ class _HomeState extends State<Home> {
               leading: Icon(Icons.home),
               title: CustomText(text: "Home"),
             ),
+
             ListTile(
-              onTap: () {},
-              leading: Icon(Icons.fastfood),
-              title: CustomText(text: "Food I like"),
-            ),
-            ListTile(
-              onTap: () {},
-              leading: Icon(Icons.restaurant),
-              title: CustomText(text: "Liked restaurants"),
-            ),
-            ListTile(
-              onTap: () {},
+              onTap: () async{
+                await user.getOrders();
+                changeScreen(context, OrderScreen());
+
+              },
               leading: Icon(Icons.bookmark_border),
               title: CustomText(text: "My orders"),
             ),
             ListTile(
-              onTap: () {},
+              onTap: () {
+                changeScreen(context, CartScreen());
+              },
               leading: Icon(Icons.shopping_cart),
               title: CustomText(text: "Cart"),
             ),
             ListTile(
-              onTap: () {},
-              leading: Icon(Icons.settings),
-              title: CustomText(text: "Settings"),
+              onTap: () {
+                user.signOut();
+                changeScreenReplacement(context, LoginScreen());
+              },
+              leading: Icon(Icons.exit_to_app),
+              title: CustomText(text: "Sign Out"),
             ),
           ],
         ),
